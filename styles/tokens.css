@@ -1,0 +1,93 @@
+/*
+ * Design tokens.
+ * Two axes drive four rendered themes:
+ *   data-theme    = light | dark        (base mode)
+ *   data-contrast = normal | high       (High Contrast toggle)
+ * Defaults (no attributes) resolve to Light / normal.
+ * Every color pairing below is chosen to meet WCAG contrast:
+ *   normal themes >= 4.5:1 for text; high-contrast themes target >= 7:1 (AAA).
+ */
+
+:root {
+  /* --- Light / normal --- */
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --surface-raised: #ffffff;
+  --text: #16181d;
+  --text-muted: #4c515a; /* ~8:1 on --bg */
+  --border: #c7cbd3;
+  --border-strong: #8b909b;
+  --accent: #1a4fbf; /* link/interactive text, ~7:1 on --bg */
+  --accent-fill: #1a4fbf; /* button background */
+  --on-accent: #ffffff; /* text on --accent-fill */
+  --accent-hover: #143f9c;
+  --focus: #1a4fbf;
+  --focus-offset: #ffffff;
+
+  /* --- Non-color tokens (theme independent) --- */
+  --focus-width: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --maxw: 68rem;
+  --tap-min: 44px;
+}
+
+[data-theme="dark"] {
+  --bg: #0f1216;
+  --surface: #191d24;
+  --surface-raised: #20252e;
+  --text: #f1f3f6;
+  --text-muted: #aeb6c2; /* ~9:1 on --bg */
+  --border: #363c46;
+  --border-strong: #6b7480;
+  --accent: #85a9ff; /* ~8:1 on --bg */
+  --accent-fill: #85a9ff;
+  --on-accent: #0d1015; /* dark text on light accent fill */
+  --accent-hover: #a8c0ff;
+  --focus: #85a9ff;
+  --focus-offset: #0f1216;
+}
+
+/* --- High contrast, light base (AAA target) --- */
+[data-theme="light"][data-contrast="high"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --text: #000000;
+  --text-muted: #161616;
+  --border: #000000;
+  --border-strong: #000000;
+  --accent: #0b3d91; /* deep blue on white, high contrast */
+  --accent-fill: #0a2a6b;
+  --on-accent: #ffffff;
+  --accent-hover: #06205a;
+  --focus: #000000;
+  --focus-offset: #ffffff;
+}
+
+/* --- High contrast, dark base (AAA target) --- */
+[data-theme="dark"][data-contrast="high"] {
+  --bg: #000000;
+  --surface: #000000;
+  --surface-raised: #000000;
+  --text: #ffffff;
+  --text-muted: #f2f2f2;
+  --border: #ffffff;
+  --border-strong: #ffffff;
+  --accent: #7fd4ff; /* bright cyan on black */
+  --accent-fill: #7fd4ff;
+  --on-accent: #000000;
+  --accent-hover: #b3e6ff;
+  --focus: #ffff00; /* yellow focus ring, classic HC */
+  --focus-offset: #000000;
+}
