@@ -133,9 +133,8 @@ export default function HomePage() {
           <h2>Contact and booking</h2>
           <p>
             Tell me about your event using the form below, or connect with me on{" "}
-            {/* TODO: real content: replace with your real LinkedIn profile URL. */}
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/damiansian/"
               rel="me noopener noreferrer"
               target="_blank"
             >
