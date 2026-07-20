@@ -52,6 +52,35 @@ test.describe("table of contents (mobile disclosure)", () => {
   });
 });
 
+test.describe("table of contents focus ring", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test("links are inset from the scroll container so focus outlines are not clipped", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const geo = await page.evaluate(() => {
+      const root = document.querySelector<HTMLElement>(
+        'nav[aria-label="On this page"]'
+      )!;
+      const link = root.querySelector<HTMLElement>("a")!;
+      const rr = root.getBoundingClientRect();
+      const lr = link.getBoundingClientRect();
+      return {
+        overflowY: getComputedStyle(root).overflowY,
+        left: lr.left - rr.left,
+        right: rr.right - lr.right,
+      };
+    });
+    // The rail scrolls (overflow), so links must be inset by at least the
+    // focus-ring extent (outline-offset 2px + outline-width 3px = 5px) or the
+    // ring gets clipped at the container edge.
+    expect(["auto", "scroll"]).toContain(geo.overflowY);
+    expect(geo.left).toBeGreaterThanOrEqual(5);
+    expect(geo.right).toBeGreaterThanOrEqual(5);
+  });
+});
+
 test("table of contents marks the current section", async ({ page }) => {
   await page.goto("/");
   const tocNav = page.getByRole("navigation", { name: "On this page" });
