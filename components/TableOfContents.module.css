@@ -70,11 +70,13 @@
 @media (min-width: 64rem) {
   .root {
     position: fixed;
-    top: 5.5rem;
+    /* Clear the sticky header (~4.5rem) with a generous gap so a transient
+       repaint of the header during scroll can never flash over the panel. */
+    top: 6.75rem;
     right: var(--space-5);
     z-index: 40;
     width: 14rem;
-    max-height: calc(100vh - 7rem);
+    max-height: calc(100vh - 8.5rem);
     overflow: auto;
     /* Pad the scroll container so focus outlines (outline-offset) are not
        clipped by overflow at the edges. */
