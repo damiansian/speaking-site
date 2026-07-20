@@ -45,12 +45,13 @@ and pull requests get preview URLs used for the live accessibility audit.
 
 Search the code for `TODO: real content`. Items to supply:
 
-- [ ] Real headshot at `public/` (replace `headshot-placeholder.svg`); set a real `alt`
-      (e.g. "Damian Sian") in `app/page.tsx`.
+- [x] Real headshot at `public/Damian-Headshot_Sized.jpg`.
 - [ ] Exact job title / bio wording in the About section (`app/page.tsx`).
 - [ ] Real speaking topics and abstracts (`TOPICS` in `app/page.tsx`).
 - [ ] Real past engagements: event, date, venue (`ENGAGEMENTS` in `app/page.tsx`).
-- [ ] Real email address and LinkedIn URL (`app/page.tsx`).
+- [ ] Real LinkedIn profile URL (`app/page.tsx`).
 - [ ] Production domain in `app/layout.tsx` (`metadataBase`).
-- [ ] Contact form email delivery: add `RESEND_API_KEY` + verified sender in Vercel env vars
-      and enable the Resend block in `app/api/contact/route.ts`.
+- [ ] Contact form delivery: create a Formspree form pointing at your inbox, then set
+      `NEXT_PUBLIC_FORMSPREE_ENDPOINT` (e.g. `https://formspree.io/f/xxxxxxxx`) in Vercel
+      project env vars and in a local `.env.local`. The form posts there via
+      `components/ContactForm.tsx`.

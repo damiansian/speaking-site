@@ -132,11 +132,8 @@ export default function HomePage() {
         <div className="container">
           <h2>Contact and booking</h2>
           <p>
-            Tell me about your event and I will get back to you by email. You can
-            also reach me directly at{" "}
-            {/* TODO: real content: replace with your real email. */}
-            <a href="mailto:hello@example.com">hello@example.com</a> or connect on{" "}
-            {/* TODO: real content: replace with your real LinkedIn URL. */}
+            Tell me about your event using the form below, or connect with me on{" "}
+            {/* TODO: real content: replace with your real LinkedIn profile URL. */}
             <a
               href="https://www.linkedin.com/"
               rel="me noopener noreferrer"

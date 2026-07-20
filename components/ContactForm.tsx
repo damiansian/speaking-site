@@ -48,11 +48,21 @@ export default function ContactForm() {
       return;
     }
 
+    // Formspree endpoint, configured per environment (never committed).
+    const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+    if (!endpoint) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("submitting");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           name: data.get("name"),
           email: data.get("email"),
@@ -138,7 +148,7 @@ export default function ContactForm() {
         {status === "success" &&
           "Thanks. Your message has been sent and I will reply by email."}
         {status === "error" &&
-          "Something went wrong sending your message. Please email me directly instead."}
+          "Something went wrong sending your message. Please reach out on LinkedIn instead."}
       </div>
     </form>
   );

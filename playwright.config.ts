@@ -25,5 +25,8 @@ export default defineConfig({
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
+    // A stand-in Formspree endpoint so the client bundle has one at build time;
+    // the success test intercepts this URL rather than hitting the network.
+    env: { NEXT_PUBLIC_FORMSPREE_ENDPOINT: "https://formspree.io/f/testform" },
   },
 });

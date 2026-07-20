@@ -26,6 +26,15 @@ test("invalid email is rejected", async ({ page }) => {
 });
 
 test("valid submit announces success in the live region", async ({ page }) => {
+  // Intercept the Formspree endpoint so the test never hits the network.
+  await page.route("https://formspree.io/f/testform", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ ok: true }),
+    })
+  );
+
   await page.goto("/");
   await page.getByLabel("Name").fill("Test Organizer");
   await page.getByLabel("Email").fill("organizer@example.com");
