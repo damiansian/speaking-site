@@ -113,13 +113,33 @@ section:focus {
   outline: none;
 }
 
-/* Page shell: reserves a right gutter on wide screens for the fixed TOC rail. */
+/* Page shell. On wide screens it is a two-column grid: content + a sticky TOC
+   rail. Both the header and the TOC are position:sticky, so they share the same
+   scroll compositing and stay in lockstep (no fixed-vs-sticky desync that let
+   the header flash over the TOC during a fast scroll). */
 .shell {
   position: relative;
 }
 @media (min-width: 64rem) {
   .shell {
-    padding-right: 16rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    column-gap: var(--space-6);
+    padding-right: var(--space-5);
+    align-items: start;
+  }
+  .shell > main {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+  .shell > nav {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .shell > footer {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }
 

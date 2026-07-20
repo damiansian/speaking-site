@@ -69,13 +69,12 @@
 /* Desktop: a fixed sticky rail in the reserved right gutter. */
 @media (min-width: 64rem) {
   .root {
-    position: fixed;
-    /* Clear the sticky header (~4.5rem) with a generous gap so a transient
-       repaint of the header during scroll can never flash over the panel. */
+    /* Sticky (not fixed) so it shares scroll compositing with the sticky
+       header and cannot desync from it during a fast scroll. Clears the
+       header (~4.5rem) with a comfortable gap. */
+    position: sticky;
     top: 6.75rem;
-    right: var(--space-5);
-    z-index: 40;
-    width: 14rem;
+    align-self: start;
     max-height: calc(100vh - 8.5rem);
     overflow: auto;
     /* Pad the scroll container so focus outlines (outline-offset) are not
