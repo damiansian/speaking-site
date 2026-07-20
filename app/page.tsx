@@ -67,13 +67,12 @@ export default function HomePage() {
                 </a>
               </p>
             </div>
-            {/* TODO: real content: replace with a real headshot and alt text. */}
             <Image
               className={styles.headshot}
-              src="/headshot-placeholder.svg"
-              width={320}
-              height={320}
-              alt=""
+              src="/Damian-Headshot_Sized.jpg"
+              width={600}
+              height={597}
+              alt="Damian Sian"
               priority
             />
           </div>
