@@ -45,17 +45,11 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section
-        aria-labelledby="hero-heading"
-        id="overview"
-        className={styles.hero}
-      >
+      <section id="overview" className={styles.hero}>
         <div className="container">
           <div className={styles.heroGrid}>
             <div>
-              <h1 id="hero-heading">
-                Accessibility that teams can actually ship
-              </h1>
+              <h1>Accessibility that teams can actually ship</h1>
               <p className={styles.lede}>
                 I am Damian Sian. I speak and teach on digital accessibility,
                 helping organizations turn standards into practice, from WCAG 2.2
@@ -80,9 +74,9 @@ export default function HomePage() {
       </section>
 
       {/* About */}
-      <section aria-labelledby="about-heading" id="about" className={styles.alt}>
+      <section id="about" className={styles.alt}>
         <div className="container">
-          <h2 id="about-heading">About</h2>
+          <h2>About</h2>
           {/* TODO: real content: tighten this bio and confirm your exact title. */}
           <p>
             I work in accessibility at Adobe on the Product Equity team, where the
@@ -101,9 +95,9 @@ export default function HomePage() {
       </section>
 
       {/* Speaking topics */}
-      <section aria-labelledby="topics-heading" id="topics">
+      <section id="topics">
         <div className="container">
-          <h2 id="topics-heading">Speaking topics</h2>
+          <h2>Speaking topics</h2>
           <ul className={styles.cardGrid} role="list">
             {TOPICS.map((topic) => (
               <li key={topic.title} className={styles.card}>
@@ -116,13 +110,9 @@ export default function HomePage() {
       </section>
 
       {/* Past engagements */}
-      <section
-        aria-labelledby="engagements-heading"
-        id="engagements"
-        className={styles.alt}
-      >
+      <section id="engagements" className={styles.alt}>
         <div className="container">
-          <h2 id="engagements-heading">Past engagements</h2>
+          <h2>Past engagements</h2>
           <ul className={styles.timeline} role="list">
             {ENGAGEMENTS.map((item) => (
               <li key={item.title} className={styles.timelineItem}>
@@ -138,9 +128,9 @@ export default function HomePage() {
       </section>
 
       {/* Contact */}
-      <section aria-labelledby="contact-heading" id="contact">
+      <section id="contact">
         <div className="container">
-          <h2 id="contact-heading">Contact and booking</h2>
+          <h2>Contact and booking</h2>
           <p>
             Tell me about your event and I will get back to you by email. You can
             also reach me directly at{" "}
