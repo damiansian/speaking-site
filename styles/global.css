@@ -107,9 +107,20 @@ img {
 
 section {
   padding-block: var(--space-9);
+  scroll-margin-top: 5rem; /* offset for the sticky header on anchor jumps */
 }
 section:focus {
   outline: none;
+}
+
+/* Page shell: reserves a right gutter on wide screens for the fixed TOC rail. */
+.shell {
+  position: relative;
+}
+@media (min-width: 64rem) {
+  .shell {
+    padding-right: 16rem;
+  }
 }
 
 /* Respect reduced-motion preference */

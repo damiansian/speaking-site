@@ -45,7 +45,11 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section aria-labelledby="hero-heading" className={styles.hero}>
+      <section
+        aria-labelledby="hero-heading"
+        id="overview"
+        className={styles.hero}
+      >
         <div className="container">
           <div className={styles.heroGrid}>
             <div>
@@ -77,7 +81,7 @@ export default function HomePage() {
       </section>
 
       {/* About */}
-      <section aria-labelledby="about-heading" className={styles.alt}>
+      <section aria-labelledby="about-heading" id="about" className={styles.alt}>
         <div className="container">
           <h2 id="about-heading">About</h2>
           {/* TODO: real content: tighten this bio and confirm your exact title. */}

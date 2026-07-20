@@ -1,0 +1,103 @@
+/* Mobile default: an in-flow disclosure at the top of the content. */
+.root {
+  padding-inline: var(--space-5);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--tap-min);
+  margin-block: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  font: inherit;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.panel {
+  display: none;
+}
+.panel.open {
+  display: block;
+  margin-bottom: var(--space-5);
+  padding: var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.heading {
+  display: none;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  border-left: 3px solid transparent;
+  border-radius: var(--radius-sm);
+}
+
+.link:hover {
+  background: var(--surface);
+  text-decoration: underline;
+}
+
+.link[aria-current="true"] {
+  color: var(--accent);
+  background: var(--surface);
+  border-left-color: var(--accent);
+}
+
+/* Desktop: a fixed sticky rail in the reserved right gutter. */
+@media (min-width: 64rem) {
+  .root {
+    position: fixed;
+    top: 5.5rem;
+    right: var(--space-5);
+    z-index: 40;
+    width: 14rem;
+    max-height: calc(100vh - 7rem);
+    overflow: auto;
+    padding-inline: 0;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .panel {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .heading {
+    display: block;
+    margin: 0 0 var(--space-2);
+    padding-inline: var(--space-3);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+}

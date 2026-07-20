@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
+import TableOfContents from "@/components/TableOfContents";
 import { themeScript } from "@/components/theme-script";
 import "@/styles/global.css";
 
@@ -33,14 +34,23 @@ export default function RootLayout({
         </a>
         <span id="top" />
         <SiteHeader />
-        <main id="main" tabIndex={-1}>
-          {children}
-        </main>
-        <footer className="container" role="contentinfo">
-          <p style={{ paddingBlock: "var(--space-6)", color: "var(--text-muted)" }}>
-            &copy; {new Date().getFullYear()} Damian Sian. Built to meet WCAG 2.2 AA.
-          </p>
-        </footer>
+        <div className="shell">
+          <TableOfContents />
+          <main id="main" tabIndex={-1}>
+            {children}
+          </main>
+          <footer className="container" role="contentinfo">
+            <p
+              style={{
+                paddingBlock: "var(--space-6)",
+                color: "var(--text-muted)",
+              }}
+            >
+              &copy; {new Date().getFullYear()} Damian Sian. Built to meet WCAG
+              2.2 AA.
+            </p>
+          </footer>
+        </div>
       </body>
     </html>
   );

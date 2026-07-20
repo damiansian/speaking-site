@@ -28,28 +28,41 @@ test("focused elements show a visible focus outline", async ({ page }) => {
   expect(parseFloat(outlineWidth)).toBeGreaterThan(0);
 });
 
-test.describe("mobile navigation", () => {
+test.describe("table of contents (mobile disclosure)", () => {
   test.use({ viewport: { width: 390, height: 780 } });
 
-  test("opens, closes with Escape, and restores focus", async ({ page }) => {
+  test("toggle reveals section links and closes on selection", async ({
+    page,
+  }) => {
     await page.goto("/");
-    const toggle = page.getByRole("button", { name: "Menu" });
+    const toggle = page.getByRole("button", { name: "On this page" });
     await expect(toggle).toHaveAttribute("aria-expanded", "false");
 
+    const aboutLink = page.getByRole("link", { name: "About" });
+    await expect(aboutLink).toBeHidden();
+
     await toggle.click();
-    const openToggle = page.getByRole("button", { name: "Close menu" });
-    await expect(openToggle).toHaveAttribute("aria-expanded", "true");
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+    await expect(aboutLink).toBeVisible();
 
-    // Focus should move into the panel (first nav link).
-    await expect(
-      page.getByRole("link", { name: "About" })
-    ).toBeFocused();
-
-    await page.keyboard.press("Escape");
-    await expect(
-      page.getByRole("button", { name: "Menu" })
-    ).toHaveAttribute("aria-expanded", "false");
-    // Focus returns to the toggle.
-    await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
+    // Selecting a section collapses the panel and lands on the target.
+    await aboutLink.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await expect(page).toHaveURL(/#about$/);
   });
+});
+
+test("table of contents marks the current section", async ({ page }) => {
+  await page.goto("/");
+  const tocNav = page.getByRole("navigation", { name: "On this page" });
+  // On load (top of page) the Overview entry is current.
+  await expect(
+    tocNav.getByRole("link", { name: "Overview" })
+  ).toHaveAttribute("aria-current", "true");
+
+  // Scroll to the contact section; scrollspy updates aria-current.
+  await page.locator("#contact").scrollIntoViewIfNeeded();
+  await expect(
+    tocNav.getByRole("link", { name: "Contact" })
+  ).toHaveAttribute("aria-current", "true");
 });
