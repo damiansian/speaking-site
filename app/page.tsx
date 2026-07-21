@@ -52,14 +52,12 @@ const ENGAGEMENTS: Engagement[] = [
     title:
       "Building accessibility education programs centered on the IAAP certification process",
     venue: "M-Enabling Summit",
-    url: "https://m-enabling.com/agenda.html",
   },
   {
     date: "2018",
     title:
       "Building accessibility education programs centered on the IAAP certification process",
     venue: "CSUN Assistive Technology Conference",
-    url: "http://www.csun.edu/cod/conference/2018/sessions/index.php/public/presentations/view/171",
   },
   {
     date: "2018",
@@ -72,7 +70,7 @@ const ENGAGEMENTS: Engagement[] = [
     date: "2017",
     title: "Building a PDF accessibility practice in higher education",
     venue: "AHEAD",
-    url: "http://www.ahead-archive.org/conf/2017%20Conference/Handouts/4.1/PDF%20a11y%20Deck%20AHEAD.pdf",
+    url: "https://www.ahead-archive.org/conf/2017%20Conference/Handouts/4.1/PDF%20a11y%20Deck%20AHEAD.pdf",
   },
   {
     date: "2017",
@@ -89,6 +87,13 @@ const ENGAGEMENTS: Engagement[] = [
     url: "https://www.youtube.com/watch?v=QpbTYGBV7Lo",
   },
 ];
+
+/* Format hint shown in an engagement link's text (and its accessible name). */
+function linkKind(url: string): "PDF" | "video" | null {
+  if (/\.pdf($|[?#])/i.test(url)) return "PDF";
+  if (/youtube\.com|youtu\.be/i.test(url)) return "video";
+  return null;
+}
 
 export default function HomePage() {
   return (
@@ -163,30 +168,43 @@ export default function HomePage() {
         <div className="container">
           <h2>Speaking engagements</h2>
           <ul className={styles.timeline} role="list">
-            {ENGAGEMENTS.map((item) => (
-              <li
-                key={`${item.date}-${item.venue}`}
-                className={styles.timelineItem}
-              >
-                <span className={styles.date}>{item.date}</span>
-                <div>
-                  <h3 className={styles.timelineTitle}>
-                    {item.url ? (
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.title}
-                      </a>
-                    ) : (
-                      item.title
-                    )}
-                  </h3>
-                  <p className={styles.venue}>{item.venue}</p>
-                </div>
-              </li>
-            ))}
+            {ENGAGEMENTS.map((item) => {
+              const kind = item.url ? linkKind(item.url) : null;
+              return (
+                <li
+                  key={`${item.date}-${item.venue}`}
+                  className={styles.timelineItem}
+                >
+                  <span className={styles.date}>{item.date}</span>
+                  <div>
+                    <h3 className={styles.timelineTitle}>
+                      {item.url ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {item.title}
+                          {kind && (
+                            <span className={styles.linkMeta}> ({kind})</span>
+                          )}
+                          <span aria-hidden="true" className={styles.linkMeta}>
+                            {" ↗"}
+                          </span>
+                          <span className="visually-hidden">
+                            {" "}
+                            (opens in new tab)
+                          </span>
+                        </a>
+                      ) : (
+                        item.title
+                      )}
+                    </h3>
+                    <p className={styles.venue}>{item.venue}</p>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>

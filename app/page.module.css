@@ -104,6 +104,14 @@
   color: var(--text-muted);
 }
 
+/* Format / new-tab hints inside an engagement link. Inherit the link color
+   so they read as part of the link. */
+.linkMeta {
+  font-weight: 400;
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
 @media (max-width: 48rem) {
   .heroGrid {
     grid-template-columns: 1fr;
