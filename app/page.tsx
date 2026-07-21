@@ -26,8 +26,7 @@ type Engagement = {
   date: string;
   title: string;
   venue: string;
-  /* TODO: add a link (recording, slides, or event page) for each talk. */
-  url?: string;
+  url?: string; // recording, slides, or event page
 };
 
 const ENGAGEMENTS: Engagement[] = [
@@ -40,46 +39,54 @@ const ENGAGEMENTS: Engagement[] = [
     date: "2024",
     title: "Creating accessibility annotations in design compositions",
     venue: "Axe-con",
+    url: "https://www.deque.com/axe-con/speakers/damian-sian/",
   },
   {
     date: "2022",
     title: "Leveraging metadata in accessible image workflows",
     venue: "IPTC Photo Metadata Conference",
+    url: "https://iptc.org/download/events/phmdc2022/Adobe_Accessibility_Update.pdf",
   },
   {
     date: "2019",
     title:
       "Building accessibility education programs centered on the IAAP certification process",
     venue: "M-Enabling Summit",
+    url: "https://m-enabling.com/agenda.html",
   },
   {
     date: "2018",
     title:
       "Building accessibility education programs centered on the IAAP certification process",
     venue: "CSUN Assistive Technology Conference",
+    url: "http://www.csun.edu/cod/conference/2018/sessions/index.php/public/presentations/view/171",
   },
   {
     date: "2018",
     title:
       "Building a PDF accessibility practice in corporate marketing workflows",
     venue: "PDF Day at the National Archives",
+    url: "https://www.pdfa.org/event/pdf-day-washington-dc/",
   },
   {
     date: "2017",
     title: "Building a PDF accessibility practice in higher education",
     venue: "AHEAD",
+    url: "http://www.ahead-archive.org/conf/2017%20Conference/Handouts/4.1/PDF%20a11y%20Deck%20AHEAD.pdf",
   },
   {
     date: "2017",
     title:
       "Building accessibility education programs centered on the IAAP certification process",
     venue: "United Nations Convention on the Rights of Persons with Disabilities",
+    url: "https://www.un.org/development/desa/disabilities/conference-of-states-parties-to-the-convention-on-the-rights-of-persons-with-disabilities-2/list-of-side-events.html",
   },
   {
     date: "2016",
     title:
       "Building a PDF accessibility practice in corporate marketing workflows",
     venue: "A11YNYC",
+    url: "https://www.youtube.com/watch?v=QpbTYGBV7Lo",
   },
 ];
 
