@@ -22,22 +22,64 @@ const TOPICS = [
   },
 ];
 
-/* TODO: real content: replace with your actual talks, dates, and venues. */
-const ENGAGEMENTS = [
+type Engagement = {
+  date: string;
+  title: string;
+  venue: string;
+  /* TODO: add a link (recording, slides, or event page) for each talk. */
+  url?: string;
+};
+
+const ENGAGEMENTS: Engagement[] = [
   {
     date: "2026",
-    title: "Scaling accessibility across product teams",
-    venue: "Adobe Product Equity, Champion Program cohort",
+    title: "Getting to Zero: Fixing Your Blackboard Ally Errors",
+    venue: "RUOnlineCon 2026, Rutgers University",
   },
   {
-    date: "2026",
-    title: "Interpreting automated accessibility results",
-    venue: "Rutgers University, accessibility curriculum",
+    date: "2024",
+    title: "Creating accessibility annotations in design compositions",
+    venue: "Axe-con",
   },
   {
-    date: "2025",
-    title: "ADA Title II and the road to compliance",
-    venue: "Higher education accessibility workshop",
+    date: "2022",
+    title: "Leveraging metadata in accessible image workflows",
+    venue: "IPTC Photo Metadata Conference",
+  },
+  {
+    date: "2019",
+    title:
+      "Building accessibility education programs centered on the IAAP certification process",
+    venue: "M-Enabling Summit",
+  },
+  {
+    date: "2018",
+    title:
+      "Building accessibility education programs centered on the IAAP certification process",
+    venue: "CSUN Assistive Technology Conference",
+  },
+  {
+    date: "2018",
+    title:
+      "Building a PDF accessibility practice in corporate marketing workflows",
+    venue: "PDF Day at the National Archives",
+  },
+  {
+    date: "2017",
+    title: "Building a PDF accessibility practice in higher education",
+    venue: "AHEAD",
+  },
+  {
+    date: "2017",
+    title:
+      "Building accessibility education programs centered on the IAAP certification process",
+    venue: "United Nations Convention on the Rights of Persons with Disabilities",
+  },
+  {
+    date: "2016",
+    title:
+      "Building a PDF accessibility practice in corporate marketing workflows",
+    venue: "A11YNYC",
   },
 ];
 
@@ -112,13 +154,28 @@ export default function HomePage() {
       {/* Past engagements */}
       <section id="engagements" className={styles.alt}>
         <div className="container">
-          <h2>Past engagements</h2>
+          <h2>Speaking engagements</h2>
           <ul className={styles.timeline} role="list">
             {ENGAGEMENTS.map((item) => (
-              <li key={item.title} className={styles.timelineItem}>
+              <li
+                key={`${item.date}-${item.venue}`}
+                className={styles.timelineItem}
+              >
                 <span className={styles.date}>{item.date}</span>
                 <div>
-                  <h3 className={styles.timelineTitle}>{item.title}</h3>
+                  <h3 className={styles.timelineTitle}>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.title}
+                      </a>
+                    ) : (
+                      item.title
+                    )}
+                  </h3>
                   <p className={styles.venue}>{item.venue}</p>
                 </div>
               </li>

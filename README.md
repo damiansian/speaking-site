@@ -48,8 +48,9 @@ Search the code for `TODO: real content`. Items to supply:
 - [x] Real headshot at `public/Damian-Headshot_Sized.jpg`.
 - [ ] Exact job title / bio wording in the About section (`app/page.tsx`).
 - [ ] Real speaking topics and abstracts (`TOPICS` in `app/page.tsx`).
-- [ ] Real past engagements: event, date, venue (`ENGAGEMENTS` in `app/page.tsx`).
-- [ ] Real LinkedIn profile URL (`app/page.tsx`).
+- [x] Real speaking engagements (`ENGAGEMENTS` in `app/page.tsx`).
+- [ ] Add a `url` per engagement (recording / slides / event page); titles link automatically when set.
+- [x] Real LinkedIn profile URL (`app/page.tsx`).
 - [ ] Production domain in `app/layout.tsx` (`metadataBase`).
 - [ ] Contact form delivery: create a Formspree form pointing at your inbox, then set
       `NEXT_PUBLIC_FORMSPREE_ENDPOINT` (e.g. `https://formspree.io/f/xxxxxxxx`) in Vercel
